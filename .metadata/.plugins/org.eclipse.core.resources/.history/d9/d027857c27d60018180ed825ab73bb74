@@ -18,7 +18,6 @@ public class Node {
 		children.add(child);
 		child.setParent(this);
 	}
-	
 	// Used for Testing // 
 	public void print(){
 		System.out.println(name + " {");

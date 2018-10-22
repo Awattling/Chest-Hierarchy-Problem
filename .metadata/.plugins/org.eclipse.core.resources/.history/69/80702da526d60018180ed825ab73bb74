@@ -19,16 +19,6 @@ public class Node {
 		child.setParent(this);
 	}
 	
-	// Used for Testing // 
-	public void print(){
-		System.out.println(name + " {");
-		for(int x = 0; x < children.size(); x++){
-			children.get(x).print();
-		}
-		System.out.println(" }");
-	}
-	
-	/* Getters and Setters */
 	public String getName(){
 		return name;
 	}

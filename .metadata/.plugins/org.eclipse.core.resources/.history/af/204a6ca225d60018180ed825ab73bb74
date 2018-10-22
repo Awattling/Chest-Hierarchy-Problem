@@ -1,0 +1,10 @@
+
+public class Main {
+	static Node root;
+	/* Main Application running thread */
+	public static void main(String[] args) {
+		root = new Node("Chest");
+		Node lungs = new Node("Lungs", root);
+	}
+
+}
