@@ -39,18 +39,10 @@ public class Window implements Runnable{
 		/* Recursive call to root to show all components nessary for the tree structure*/
 		displayTree(root, gbc, 0, 0);
 		
-		/* Images */
-		showImages(gbc);
-		
 		/* Display updates to panel */
 		panel.revalidate();
 		panel.repaint();
 	
-	}
-	
-	private void showImages(GridBagConstraints gbc) {
-		
-		
 	}
 
 	/* Recursive method to build the buttons with proper x, y coordinates according to gridbag layout */

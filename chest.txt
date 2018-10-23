@@ -1,0 +1,21 @@
+Chest{
+	Lungs{
+		Right Lung{
+			Superior Lobe{}
+			Middle Lobe{}
+			Inferior Lobe{}
+		}
+		Left Lung {
+			Superior Lobe{}
+			Inferior Lobe{}
+		}
+	}
+	Heart{
+		Left Ventricle{}
+		Right Ventricle{}
+		Left Aorta{}
+		Right Aorta{}
+		Spetum{}
+		
+	}
+}

@@ -1,11 +1,11 @@
 import javax.swing.SwingUtilities;
-
 public class Main {
 	static Node root;
 	static Window window = new Window();
 	
 	/* Main Application running thread */
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
+		
 		// Start UI in separate thread // 
 		SwingUtilities.invokeLater(window);
 		
@@ -18,7 +18,7 @@ public class Main {
 		
 	}
 	
-	public static void buildTree(){
+	public static void buildTree(){		
 		root = new Node("Chest");
 		// Adding Lung Structures // 
 		Node lungs = new Node("Lungs", root);
