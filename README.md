@@ -12,6 +12,7 @@ Runnig Instructions:
 	- Run program: Java Main
 	
 Process, decisions and features: 
+	
 	- I was given a tree type structure and how it should behave. I decided to implement my own tree structure instead of utilizing some of the premade java libraries
 	as it would make the behaviors requested easy to implement. This also served to keep the overall weight and efficiency of the program a little bit better. 
 
