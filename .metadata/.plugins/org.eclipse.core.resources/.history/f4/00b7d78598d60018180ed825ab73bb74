@@ -36,11 +36,7 @@ public class Window implements Runnable{
 		gbc.fill = GridBagConstraints.HORIZONTAL; 
 		gbc.insets = new Insets(5,5,5,-20);
 		
-		/* Recursive call to root to show all components nessary for the tree structure*/
 		displayTree(root, gbc, 0, 0);
-		
-		/* Images */
-		showImages(gbc);
 		
 		/* Display updates to panel */
 		panel.revalidate();
@@ -48,11 +44,6 @@ public class Window implements Runnable{
 	
 	}
 	
-	private void showImages(GridBagConstraints gbc) {
-		
-		
-	}
-
 	/* Recursive method to build the buttons with proper x, y coordinates according to gridbag layout */
 	private void displayTree(Node branch, GridBagConstraints gbc, int x, int y) {
 		/* Make button with name of node */
