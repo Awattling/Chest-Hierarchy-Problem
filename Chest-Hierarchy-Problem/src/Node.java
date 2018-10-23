@@ -1,5 +1,10 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 public class Node {
 	private String name;
@@ -7,6 +12,7 @@ public class Node {
 	private boolean isActive = false; 
 	private List<Node> children = new ArrayList<Node>(); 
 	private int size = 0;
+	private BufferedImage pic; 
 	
 	/* Constructor to set name of node*/
 	public Node(String name){
@@ -18,6 +24,7 @@ public class Node {
 		this.parent = parent; 
 		parent.addChild(this);
 	}
+
 	/* Method to add child to node */
 	public void addChild(Node child){
 		children.add(child);
@@ -50,6 +57,15 @@ public class Node {
 	}
 	
 	/* Getters and Setters */
+	public void setPic(String path){
+		try {
+			this.pic = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
+	
 	public String getName(){
 		return name;
 	}
@@ -67,6 +83,9 @@ public class Node {
 	}
 	public boolean getActive(){
 		return isActive; 
+	}
+	public BufferedImage getPic() {
+		return pic;
 	}	
 	
 }

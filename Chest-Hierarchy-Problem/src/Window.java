@@ -1,11 +1,20 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class Window implements Runnable{
@@ -17,8 +26,7 @@ public class Window implements Runnable{
 	/* Because the window is intended to run in a separate thread from the main program it must implement the runnable interface and override the run method*/
 	@Override
 	public void run() {
-		/* Setting up basics on window such as size, visibility and close operations */ 
-		frame.setSize(600, 600);
+		/* Setting up basics on window such as visibility and close operations */ 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);	
 		/* Adding Panel to window to act as lightweight container*/
@@ -34,23 +42,45 @@ public class Window implements Runnable{
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL; 
-		gbc.insets = new Insets(5,5,5,-20);
+		gbc.insets = new Insets(5,5,5,5);
 		
-		/* Recursive call to root to show all components nessary for the tree structure*/
+		/* Images */	
+		showImages(root,gbc ,0);
+		
+		
+		
+		/* Recursive call to root to show all components required for the tree structure buttons*/
 		displayTree(root, gbc, 0, 0);
 		
-		/* Images */
-		showImages(gbc);
+	
 		
 		/* Display updates to panel */
 		panel.revalidate();
 		panel.repaint();
+		
+		/* Resizes the window so everything fits */
+		frame.pack();
 	
 	}
 	
-	private void showImages(GridBagConstraints gbc) {
-		
-		
+	private void showImages(Node branch, GridBagConstraints gbc, int layer) {
+		JLayeredPane pan = new JLayeredPane();
+		pan.setPreferredSize(new Dimension(300,300));
+		pan.setBackground(Color.BLUE);
+		/*if(!branch.getChildren().isEmpty()){
+			for(int i = 0; i < branch.getChildren().size(); i++){
+				showImages(branch.getChildren().get(i), gbc, layer + 1);
+			}
+		}
+		if(branch.getActive() && branch.getPic() != null){
+			System.out.println(branch.getName());
+			//JLabel picLabel = new JLabel(new ImageIcon(branch.getPic()));
+			JLabel picLabel = new JLabel(branch.getName());
+			pan.add(picLabel, new Integer(layer), 0);
+		} */
+		gbc.gridx = 100;
+		gbc.gridy = 100;
+		panel.add(pan, gbc);	
 	}
 
 	/* Recursive method to build the buttons with proper x, y coordinates according to gridbag layout */
