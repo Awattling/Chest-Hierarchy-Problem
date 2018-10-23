@@ -3,17 +3,13 @@ import javax.swing.SwingUtilities;
 public class Main {
 	static Node root;
 	static Window window = new Window();
-	
 	/* Main Application running thread */
 	public static void main(String[] args) {	
 		// Start UI in separate thread // 
 		SwingUtilities.invokeLater(window);
-		
 		// Make the tree structure //
 		buildTree();
-		/* Give window the tree*/
 		window.setRoot(root);
-		/* Refresh the window display */
 		window.buildDisplay();
 		
 	}

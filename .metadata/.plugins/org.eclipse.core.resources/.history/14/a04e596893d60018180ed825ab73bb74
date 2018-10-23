@@ -4,8 +4,10 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Window implements Runnable{
@@ -18,7 +20,7 @@ public class Window implements Runnable{
 	@Override
 	public void run() {
 		/* Setting up basics on window such as size, visibility and close operations */ 
-		frame.setSize(600, 600);
+		frame.setSize(700, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);	
 		/* Adding Panel to window to act as lightweight container*/
@@ -34,22 +36,20 @@ public class Window implements Runnable{
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL; 
-		gbc.insets = new Insets(5,5,5,-20);
+		gbc.insets = new Insets(0,0,0,-5);
 		
 		displayTree(root, gbc, 0, 0);
 		
-		/* Display updates to panel */
+		/* Display updates panel */
 		panel.revalidate();
 		panel.repaint();
 	
 	}
 	
-	/* Recursive method to build the buttons with proper x, y coordinates according to gridbag layout */
+	/* Recursive method to build the buttons with proper x, y coordinates according to grdbag layout */
 	private void displayTree(Node branch, GridBagConstraints gbc, int x, int y) {
-		/* Make button with name of node */
-		JButton btn = new JButton(branch.getName());
 		
-		/* Change listener and button color based on active state of Node */
+		JButton btn = new JButton(branch.getName());
 		if(branch.getActive()){
 			btn.setBackground(Color.GREEN);
 			btn.addActionListener(new ActionListener(){
@@ -68,25 +68,23 @@ public class Window implements Runnable{
 			});
 		}
 		
-		/* Add button to panel display at given x and y coordinates */
+		
 		gbc.gridx = x;
 		gbc.gridy = y;
-		panel.add(btn, gbc);	
+		panel.add(btn, gbc);
 		
-		/* Calculate x and y coordinates for children and recursive call*/
 		if(!branch.getChildren().isEmpty()){
 			for(int i = 0; i < branch.getChildren().size(); i++){
-				/* Recursive call for children of given branch */
 				displayTree(branch.getChildren().get(i), gbc, x+1, y + 1);
-				/* Calculate y for next child based on how many total children nodes each child has (saved in node)*/
-				y += branch.getChildren().get(i).getSize() + 1;
-				
+				if(branch.getChildren().get(i).getSize() == 0){
+					y += 1; 
+				}else{
+					y += branch.getChildren().get(i).getSize() + 1;
+				}
 			}
-		}
+		}	
 	}
 	
-	/* Set root node of tree to be displayed
-	 * Note: if this changes past first render you will need to call buildDisplay()*/
 	public void setRoot(Node root){
 		this.root = root; 
 	}

@@ -18,7 +18,7 @@ public class Window implements Runnable{
 	@Override
 	public void run() {
 		/* Setting up basics on window such as size, visibility and close operations */ 
-		frame.setSize(600, 600);
+		frame.setSize(700, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);	
 		/* Adding Panel to window to act as lightweight container*/
@@ -85,8 +85,6 @@ public class Window implements Runnable{
 		}
 	}
 	
-	/* Set root node of tree to be displayed
-	 * Note: if this changes past first render you will need to call buildDisplay()*/
 	public void setRoot(Node root){
 		this.root = root; 
 	}
