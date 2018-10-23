@@ -18,7 +18,7 @@ public class Window implements Runnable{
 	@Override
 	public void run() {
 		/* Setting up basics on window such as size, visibility and close operations */ 
-		frame.setSize(600, 600);
+		frame.setSize(700,700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);	
 		/* Adding Panel to window to act as lightweight container*/

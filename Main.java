@@ -18,6 +18,8 @@ public class Main {
 		
 	}
 	
+	/* Builds the tree specified in the assignment*/
+	/* Note modfication of this tree will reflect in the UI*/
 	public static void buildTree(){		
 		root = new Node("Chest");
 		// Adding Lung Structures // 
