@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 public class Window implements Runnable{
 
 	JFrame frame = new JFrame("Chest Hierarchy");
-	JPanel panel = new JPanel(null);
+	JPanel panel = new JPanel( new BorderLayout());
 	Node root;
 	
 	/* Because the window is intended to run in a separate thread from the main program it must implement the runnable interface and override the run method*/
@@ -105,28 +105,22 @@ public class Window implements Runnable{
 			});
 		}
 		
-
-		panel.add(btn);	
-				/* Add button to panel display at given x and y coordinates */
-		btn.setSize(150, 50);
-		btn.setLocation(x, y);
+		/* Add button to panel display at given x and y coordinates */
 		
 		/* Calculate x and y coordinates for children and recursive call*/
 		if(!branch.getChildren().isEmpty()){
 			for(int i = 0; i < branch.getChildren().size(); i++){
 				/* Recursive call for children of given branch */
-				displayTree(branch.getChildren().get(i), x+100, y + 50);
+				displayTree(branch.getChildren().get(i), x+100, y + 100);
 				/* Calculate y for next child based on how many total children nodes each child has (saved in node)*/
-				if(branch.getChildren().get(i).getChildren().isEmpty()){
-					y+=100;
-				}else{
-					y += branch.getChildren().get(i).getSize()*50;
-				}
-				
+				y += branch.getChildren().get(i).getSize() + 100;
 				
 			}
 		}
 		
+		panel.add(btn);	
+		btn.setSize(300, 100);
+		btn.setLocation(x, y);
 	}
 	
 	/* Set root node of tree to be displayed

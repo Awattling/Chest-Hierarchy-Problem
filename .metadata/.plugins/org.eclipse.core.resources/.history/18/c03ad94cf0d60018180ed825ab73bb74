@@ -115,14 +115,9 @@ public class Window implements Runnable{
 		if(!branch.getChildren().isEmpty()){
 			for(int i = 0; i < branch.getChildren().size(); i++){
 				/* Recursive call for children of given branch */
-				displayTree(branch.getChildren().get(i), x+100, y + 50);
+				displayTree(branch.getChildren().get(i), x+150, y + 50);
 				/* Calculate y for next child based on how many total children nodes each child has (saved in node)*/
-				if(branch.getChildren().get(i).getChildren().isEmpty()){
-					y+=100;
-				}else{
-					y += branch.getChildren().get(i).getSize()*50;
-				}
-				
+				y += branch.getChildren().get(i).getSize() + 150;
 				
 			}
 		}
