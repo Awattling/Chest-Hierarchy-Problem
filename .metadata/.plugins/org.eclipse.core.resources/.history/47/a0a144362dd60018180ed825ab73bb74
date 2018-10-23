@@ -1,0 +1,13 @@
+import javax.swing.JFrame;
+
+public class Window implements Runnable{
+
+	JFrame frame = new JFrame("Chest Hierarchy");
+	@Override
+	public void run() {
+		frame.setSize(500, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);	
+	}
+
+}

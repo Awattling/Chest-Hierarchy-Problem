@@ -1,8 +1,20 @@
+import javax.swing.SwingUtilities;
 
 public class Main {
 	static Node root;
+	static Window window = new Window();
 	/* Main Application running thread */
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
+		// Start UI in seperate thread // 
+		SwingUtilities.invokeLater(window);
+		// Make the tree structure //
+		buildTree();
+		window.setRoot(root);
+		window.showTree();
+		
+	}
+	
+	public static void buildTree(){
 		root = new Node("Chest");
 		// Adding Lung Structures // 
 		Node lungs = new Node("Lungs", root);
@@ -20,7 +32,6 @@ public class Main {
 		Heart.addChild(new Node("Left Aorta"));
 		Heart.addChild(new Node("Right Aorta"));
 		Heart.addChild(new Node("Septum"));
-		root.print();
 	}
 
 }

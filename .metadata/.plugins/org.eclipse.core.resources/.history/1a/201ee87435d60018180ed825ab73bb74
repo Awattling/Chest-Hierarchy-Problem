@@ -1,0 +1,50 @@
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Window implements Runnable{
+
+	JFrame frame = new JFrame("Chest Hierarchy");
+	JPanel panel = new JPanel();
+	@Override
+	public void run() {
+		frame.setSize(500, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);	
+		frame.add(panel); 
+	}
+	
+	public void showTree(Node root){
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL; 
+		gbc.insets = new Insets(5,5,5,5);
+		
+		recursor(root, gbc, 0, 100);
+		
+		
+		//panel.revalidate();
+		//panel.repaint();
+	}
+
+	private void recursor(Node root, GridBagConstraints gbc, int x, int y) {
+		
+		JButton btn = new JButton(root.getName());
+		gbc.gridx = x;
+		gbc.gridy = y;
+		panel.add(btn, gbc);
+		
+		if(!root.getChildren().isEmpty()){
+			for(int i = 0; i < root.getChildren().size(); i++){
+				recursor(root.getChildren().get(i), gbc, x+1,  y);
+			}
+		}
+		
+	}
+
+}
